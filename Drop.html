@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽事件</title>
+	<style type="text/css">
+		.container{
+			width: 200px;
+			height: 200px;
+			background: grey;
+		}
+		.target{
+			width: 100px;
+			height: 100px;
+			background: pink;
+		}
+		.drag{
+			background: red;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="container" class='container'></div>
+	<div id="target" class="target" draggable='true'></div>
+	<img src='side.jpg' alt="" class="hide">
+</body>	
+<script type="text/javascript" src='jquery-1.12.4.js'></script>
+<script type="text/javascript">
+
+	
+</script>
+<script type="text/javascript">
+	//被拖拽的元素
+	$('#target')
+		.on('dragstart',function(ev){
+			ev.originalEvent.dataTransfer.setData('targetId',ev.target.id);
+			 // ev.originalEvent.dataTransfer.setDragImage($('img').clone().removeClass('hide'),x,y);
+			console.log('start...')
+		})
+		.on('drag')
+	//容器
+	$('#container')
+		.on('drop',function(ev){
+			var tarId = ev.originalEvent.dataTransfer.getData('targetId');
+			$('#container').append($('#'+ tarId));
+			// $('#container').append($('#target'));
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+		.on('dragenter ',function(){//当拖入容器时候触发
+			console.log('ondragenter ......');
+			$('#container').addClass('drag');
+		})
+		.on('dragleave',function(){//当被拖动元素离开容器时触发
+			console.log('ondragleave.....');
+			$('#container').removeClass('drag');
+
+		})
+		.on('dragend',function(){//被拖动元素在容器中松开鼠标时触发
+			console.log('ondragend....');
+		})
+</script>
+</html>
