@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽小案例</title>
+	<style type="text/css">
+		.page{
+			width: 1000px;
+			height: 1000px;
+			margin: 50px auto;
+			border: 1px solid #000;
+		}
+		.container{
+			width: 400px;
+			height:400px;
+			border: 1px solid #000;
+			float: left;
+		}
+		.droplist{
+			width: 400px;
+			height: 500px;
+			float: left;
+		}
+		.box{
+			width: 300px;
+			height: 50px;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="container">调查问卷</div>
+		<div class="droplist">
+			<div class="box" draggable='true'>
+				<label>姓名</label>
+				<input type="text">
+			</div>
+			<div class="box" draggable='true'>
+				<label>性别</label>
+				<input type="text">
+			</div>
+			<div class="box" draggable='true'>
+				爱好
+				<input type="checkbox">
+				篮球
+				<input type="checkbox">
+				足球
+				<input type="checkbox">
+				乒乓球
+
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<script>
+	var targetid = null;
+	$('.droplist').on('dragstart','.box',function(ev){
+		 targetid = this;
+		 console.log(this);
+	})
+	$('.container')
+		.on('drop',function(){
+			$('.container').append($(targetid).clone());
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+</script>
+</html>
