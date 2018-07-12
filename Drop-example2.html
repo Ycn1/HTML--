@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拼图案例</title>
+	<style>
+		.container{
+			width: 500px;
+			height: 750px;
+			margin: 100px auto;
+		}
+		.droplist{
+			width: 500px;
+			height: 750px;
+		}
+		li{
+			width: 100px;
+			height: 150px;
+			float: left;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="droplist">
+			<li draggable='true'><img src="images/01.png"></li>
+			<li draggable='true'><img src="images/02.png"></li>
+			<li draggable='true'><img src="images/03.png"></li>
+			<li draggable='true'><img src="images/04.png"></li>
+			<li draggable='true'><img src="images/05.png"></li>
+			<li draggable='true'><img src="images/06.png"></li>
+			<li draggable='true'><img src="images/07.png"></li>
+			<li draggable='true'><img src="images/08.png"></li>
+			<li draggable='true'><img src="images/09.png"></li>
+			<li draggable='true'><img src="images/10.png"></li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<script>
+	var target = null;
+	$('.droplist')
+		.on('dragstart','li',function(){
+			target = this;
+			console.log(this);
+		})
+		.on('drop','li',function(){
+			if(target != this){
+				var thisTar = target.innerHTML;
+				target.innerHTML = this.innerHTML;
+				this.innerHTML = thisTar;
+			}
+			
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+</script>
+</html>
