@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>剪切</title>
+	<style type="text/css">
+
+		canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas class= "canvas" id = "canvas" width = "200" height = "200">
+		
+	</canvas>
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width=600;
+	oCanvas.height=600;
+	var ctx = oCanvas.getContext('2d');
+	 
+
+	ctx.beginPath();
+	ctx.arc(300,300,200,0,2*Math.PI,true);
+	ctx.fillStyle = "#ff6700";
+	ctx.stroke();
+	ctx.fill();
+	ctx.clip();
+	//剪切之后，画布上只有圆内部能
+
+	ctx.beginPath();
+	
+	ctx.fillStyle = "rgba(12,134,232,0.5)"
+	ctx.fillRect(300,300,200,100);
+	ctx.stroke();
+	stx.fill();
+</script>
+</html>
