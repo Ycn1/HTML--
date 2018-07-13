@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阴影</title>
+	<style type="text/css">
+
+		canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas class= "canvas" id = "canvas" width = "200" height = "200">
+		
+	</canvas>
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width=600;
+	oCanvas.height=600;
+	var ctx = oCanvas.getContext('2d');
+	ctx.beginPath();
+	ctx.fillStyle  = "#f00";
+	ctx.shadowOffsetX = 10;
+	ctx.shadowOffsetY = 10;
+	ctx.shadowBlur = 10;
+	ctx.shadowColor = 'rgba(0,0,0,0.3)'
+	ctx.fillRect(300,300,200,100);
+	// ctx.stroke();
+</script>
+</html>
