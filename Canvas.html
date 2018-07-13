@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画布</title>
+	<style type="text/css">
+
+		canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas class= "canvas" id = "canvas" width = "200" height = "200">
+		
+	</canvas>
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width='1500';
+	oCanvas.height='600';
+	var ctx = oCanvas.getContext('2d');
+	console.log(ctx);
+	ctx.moveTo(0,0);
+	ctx.lineTo(100,150);
+	ctx.lineTo(100,300);
+	//调用cLosePath方法 闭合路径
+	ctx.closePath();
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = "ff0";
+	ctx.stroke()
+	ctx.fillStyle = "#ff6700" ;
+	ctx.fill();
+
+	//调用此方法，重新开始一条路径，不会影响前面的路径
+	ctx.beginPath();
+	ctx.moveTo(300,0);
+	ctx.lineTo(400,500);
+	ctx.strokeStyle = "ff0";
+
+	ctx.stroke();
+
+	//画圆
+	ctx.beginPath();
+	ctx.arc(500,300,100,0,1*Math.PI,true);
+	ctx.strokeStyle = "#ff6700";
+	ctx.stroke();
+	//画矩形
+	ctx.beginPath();
+	ctx.strokeRect(600,300,100,50);
+	ctx.fillRect(600,400,100,50);
+
+
+	//环境保存和恢复
+
+	ctx.save();
+	ctx.beginPath();
+	// ctx.scale(2,2);
+	ctx.rotate(Math.PI/4)
+	ctx.strokeRect(150,100,100,50);
+
+	ctx.restore();
+	//环境恢复之后的新建的矩形
+	ctx.beginPath();
+	ctx.fillRect(700,200,200,100);
+
+</script>
+</html>
